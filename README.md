@@ -1,1 +1,1 @@
-#discord-now-playing-music
+# discord-now-playing-music
