@@ -6,10 +6,12 @@
 
 ## To-Do List
 
-- Set up build process (Working In Progress)
-- Implement now playing display module
-- Implement discord user account authenticate flow
-- Implement custom status updater
+- Set up build process (Done)
+- Implement now playing display module ()
+  - macOS (Done)
+  - Windows
+- Implement discord user account authenticate flow (Working In Progress)
+- Implement custom status updater (Woring In Progress)
 - Write package process & deploy
 
 ## License
