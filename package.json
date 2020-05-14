@@ -1,0 +1,33 @@
+{
+  "name": "discord-now-playing-music",
+  "version": "1.0.0",
+  "description": "Display now playing music to your discord status",
+  "main": "none",
+  "repository": "git@github.com:Jaewoook/discord-now-playing-music.git",
+  "author": "Jaewook Ahn <ajw4586@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "",
+    "dev": "",
+    "dev:renderer": "",
+    "lint": "",
+    "package": ""
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "concurrently": "^5.2.0",
+    "electron": "^8.2.5",
+    "eslint": "^7.0.0",
+    "typescript": "^3.9.2",
+    "wait-on": "^5.0.0"
+  },
+  "dependencies": {
+    "applescript": "^1.0.0",
+    "cross-env": "^7.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
+  }
+}
