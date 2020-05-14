@@ -1,16 +1,26 @@
 module.exports = {
-    extends: 'erb/typescript',
+    extends: "erb/typescript",
     rules: {
         // A temporary hack related to IDE not resolving correct package.json
-        'import/no-extraneous-dependencies': 'off',
-        quotes: ["error", "double"]
+        "import/no-extraneous-dependencies": "off",
+        quotes: [
+            "error",
+            "double",
+            {
+                avoidEscape: true,
+                allowTemplateLiterals: true
+            }
+        ],
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off",
+        "import/prefer-default-export": "off"
     },
     settings: {
-        'import/resolver': {
+        "import/resolver": {
             // See https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-575727774 for line below
             node: {},
             webpack: {
-                config: require.resolve('./configs/webpack.config.eslint.js')
+                config: require.resolve("./configs/webpack.config.eslint.js")
             }
         }
     }

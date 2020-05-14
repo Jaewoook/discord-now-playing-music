@@ -268,7 +268,8 @@
         }
       }
     ],
-    "singleQuote": true
+    "semi": true,
+    "singleQuote": false
   },
   "stylelint": {
     "extends": ["stylelint-config-standard", "stylelint-config-prettier"]
