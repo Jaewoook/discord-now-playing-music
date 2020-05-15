@@ -3,6 +3,7 @@ module.exports = {
     tabWidth: 4,
     singleQuote: false,
     jsxBracketSameLine: true,
+    trailingComma: "all",
     overrides: [
         {
             files: ['.prettierrc', '.babelrc', '.eslintrc', '.stylelintrc'],

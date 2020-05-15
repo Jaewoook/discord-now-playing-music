@@ -17,7 +17,7 @@ export default function Counter(props: Props) {
         incrementIfOdd,
         incrementAsync,
         decrement,
-        counter
+        counter,
     } = props;
 
     return (
@@ -35,32 +35,28 @@ export default function Counter(props: Props) {
                     className={styles.btn}
                     onClick={increment}
                     data-tclass="btn"
-                    type="button"
-                >
+                    type="button">
                     <i className="fa fa-plus" />
                 </button>
                 <button
                     className={styles.btn}
                     onClick={decrement}
                     data-tclass="btn"
-                    type="button"
-                >
+                    type="button">
                     <i className="fa fa-minus" />
                 </button>
                 <button
                     className={styles.btn}
                     onClick={incrementIfOdd}
                     data-tclass="btn"
-                    type="button"
-                >
+                    type="button">
                     odd
                 </button>
                 <button
                     className={styles.btn}
                     onClick={() => incrementAsync()}
                     data-tclass="btn"
-                    type="button"
-                >
+                    type="button">
                     async
                 </button>
             </div>

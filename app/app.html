@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="utf-8" />
-        <title>Hello Electron React!</title>
+        <title>Discord NowPlaying</title>
         <script>
             (() => {
                 if (
@@ -41,12 +41,7 @@
 
                 if (scripts.length) {
                     document.write(
-                        scripts
-                            .map(
-                                script =>
-                                    `<script defer src="${script}"><\/script>`
-                            )
-                            .join('')
+                        scripts.map(script =>`<script defer src="${script}"><\/script>`).join('')
                     );
                 }
             }
