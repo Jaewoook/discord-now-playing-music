@@ -1,5 +1,7 @@
 # discord-now-playing-music
 
+## Stopped due to Discord's ToS
+
 ## Supported Platform
 - macOS (currently)
 - Windows (future)

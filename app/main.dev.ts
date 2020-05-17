@@ -9,10 +9,11 @@
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  */
 import path from "path";
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, Menu, Tray } from "electron";
 import { autoUpdater } from "electron-updater";
 import log from "electron-log";
 import MenuBuilder from "./menu";
+import { getCurrentStatusMessage } from "./modules/status-updater";
 
 export default class AppUpdater {
     constructor() {
@@ -23,6 +24,7 @@ export default class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
+let appTray: Tray;
 
 if (process.env.NODE_ENV === "production") {
     const sourceMapSupport = require("source-map-support");
@@ -43,8 +45,8 @@ const installExtensions = async () => {
 
     return Promise.all(
         extensions.map(name =>
-            installer.default(installer[name], forceDownload)
-        )
+            installer.default(installer[name], forceDownload),
+        ),
     ).catch(console.log);
 };
 
@@ -63,12 +65,8 @@ const createWindow = async () => {
         webPreferences:
             process.env.NODE_ENV === "development" ||
             process.env.E2E_BUILD === "true"
-                ? {
-                      nodeIntegration: true
-                  }
-                : {
-                      preload: path.join(__dirname, "dist/renderer.prod.js")
-                  }
+                ? { nodeIntegration: true }
+                : { preload: path.join(__dirname, "dist/renderer.prod.js") },
     });
 
     mainWindow.loadURL(`file://${__dirname}/app.html`);
@@ -96,22 +94,33 @@ const createWindow = async () => {
 
     // Remove this if your app does not use auto updates
     // eslint-disable-next-line
-  new AppUpdater();
+//   new AppUpdater();
 };
 
-/**
- * Add event listeners...
- */
+const createTray = async () => {
+    appTray = new Tray(
+        path.join(__dirname, "..", "resources", "icons", "16x16.png"),
+    );
+
+    const contextMenu = Menu.buildFromTemplate([
+        { label: "Discord NowPlaying", type: "normal" },
+    ]);
+
+    appTray.setToolTip("Discord NowPlaying");
+    appTray.setContextMenu(contextMenu);
+};
 
 app.on("window-all-closed", () => {
-    // Respect the OSX convention of having the application in memory even
-    // after all windows have been closed
     if (process.platform !== "darwin") {
         app.quit();
     }
 });
 
-app.on("ready", createWindow);
+app.on("ready", async () => {
+    await createTray();
+    await createWindow();
+    getCurrentStatusMessage();
+});
 
 app.on("activate", () => {
     // On macOS it's common to re-create a window in the app when the
